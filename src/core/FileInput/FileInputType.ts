@@ -7,4 +7,5 @@ export interface IFileInputState {
 export interface IFileInputProps {
 	className?: string;
 	style?: CSSProperties;
+	acceptedFormats?: string;
 }

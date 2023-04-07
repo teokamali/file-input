@@ -22,6 +22,7 @@
     ],
     "paths": {
       "@core/*": ["core/*"],
+      "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@type": ["core/types.ts"],
     }

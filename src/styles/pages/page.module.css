@@ -1,7 +1,7 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	padding: 6rem;
 	min-height: 100vh;
@@ -13,9 +13,7 @@
 }
 
 .grid {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(25%, auto));
-	width: var(--max-width);
+	display: flex;
 	max-width: 100%;
 }
 
@@ -44,14 +42,28 @@
 	line-height: 1.5;
 	max-width: 30ch;
 }
-
+.card:hover {
+	background: rgba(var(--card-rgb), 0.1);
+	border: 1px solid rgba(var(--card-border-rgb), 0.15);
+}
 .center {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	gap: 1rem;
 	align-items: center;
 	position: relative;
 	padding: 4rem 0;
+}
+.center h1 {
+	font-weight: bold;
+	font-size: 3rem;
+}
+.center p {
+	font-weight: bold;
+	font-size: 1.2rem;
+	opacity: 0.6;
+	max-width: 70ch;
 }
 .center div {
 	display: flex;
@@ -83,21 +95,6 @@
 	position: absolute;
 	filter: blur(45px);
 	transform: translateZ(0);
-}
-
-.logo {
-	position: relative;
-}
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-	.card:hover {
-		background: rgba(var(--card-rgb), 0.1);
-		border: 1px solid rgba(var(--card-border-rgb), 0.15);
-	}
-
-	.card:hover span {
-		transform: translateX(4px);
-	}
 }
 
 @media (prefers-reduced-motion) {

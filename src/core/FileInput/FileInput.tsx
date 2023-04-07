@@ -6,7 +6,7 @@ import { useInputGroup } from "@core/InputGroup/InputGroup";
 
 const FileInput = (props: IFileInputProps) => {
 	const { contextState, setContextState } = useInputGroup();
-	const { className = "file-input", style } = props;
+	const { className = "file-input", style, acceptedFormats = "" } = props;
 	if (!contextState || !setContextState) {
 		throw new Error("You Need to Wrap <InputGroup></InputGroup> context");
 	}
@@ -29,16 +29,18 @@ const FileInput = (props: IFileInputProps) => {
 		if (inputRef.current) {
 			if (files.length) {
 				return inputRef.current.setAttribute("value", files[files.length - 1].file.name);
+			} else {
+				inputRef.current.removeAttribute("value");
 			}
-			return inputRef.current.setAttribute("value", "");
 		}
-	}, [files, inputRef]);
+	}, [files]);
 
 	return (
 		<Fragment>
 			<input
 				id='files'
 				type='file'
+				accept={acceptedFormats}
 				style={style}
 				ref={inputRef}
 				multiple={isMulti}
@@ -47,7 +49,6 @@ const FileInput = (props: IFileInputProps) => {
 					onFileChangeHandler(event.target.files)
 				}
 			/>
-			<label htmlFor='files'>{files[files.length - 1]?.file.name ?? ""}</label>
 		</Fragment>
 	);
 };

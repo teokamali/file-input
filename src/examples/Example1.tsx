@@ -1,6 +1,8 @@
 "use client";
 
 import { FileInput, InputGroup, Preview } from "@core/index";
+import { IFile } from "@core/types";
+import ImagePreviewCard from "components/ImagePreviewCard/ImagePreviewCard";
 import Image from "next/image";
 import React from "react";
 
@@ -8,24 +10,58 @@ function Example1() {
 	return (
 		<div>
 			<InputGroup isMulti>
-				<FileInput style={{ color: "transparent", display: "inline", width: "100px" }} />
+				<h2>Select A File </h2>
+				<FileInput style={{ color: "transparent" }} />
 				<Preview>
 					{({ files, onDelete }) => {
 						return (
-							<div>
-								{files.map((item, index) => {
+							<div className='flex flex-col '>
+								{files.map((item: IFile, index) => {
 									const { file, type } = item;
-									return (
-										<div key={index}>
-											<Image
-												src={URL.createObjectURL(file)}
-												alt=''
-												width={200}
-												height={200}
-											/>
-											<button onClick={() => onDelete(file)}>Delete</button>
-										</div>
-									);
+									switch (type) {
+										case "image":
+											return (
+												<ImagePreviewCard
+													file={file}
+													onDeleteImage={() => onDelete(file)}
+												/>
+											);
+										case "video":
+											return (
+												<div key={index}>
+													<video controls>
+														<source src={URL.createObjectURL(file)} />
+													</video>
+													<button onClick={() => onDelete(file)}>
+														Delete
+													</button>
+												</div>
+											);
+										case "audio":
+											return (
+												<div key={index}>
+													<audio controls>
+														<source
+															src={URL.createObjectURL(file)}
+															type={file.type}
+														/>
+													</audio>
+													<button onClick={() => onDelete(file)}>
+														Delete
+													</button>
+												</div>
+											);
+										default:
+											return (
+												<div key={index}>
+													<h1>{type}</h1>
+													<span>{file.name}</span>
+													<button onClick={() => onDelete(file)}>
+														Delete
+													</button>
+												</div>
+											);
+									}
 								})}
 							</div>
 						);

@@ -16,6 +16,7 @@ const nextConfig = {
 		config.resolve.alias = {
 			...config.resolve.alias,
 			"@core": join(__dirname, "./src/core"),
+			"@styles": join(__dirname, "./src/styles"),
 			"@type": join(__dirname, "./src/core/types.ts"),
 			"@icon": join(__dirname, "./src/utils"),
 		};
