@@ -7,5 +7,5 @@ export interface IFileInputState {
 export interface IFileInputProps {
 	className?: string;
 	style?: CSSProperties;
-	acceptedFormats?: string;
+	acceptedFormats?: "image" | "audio" | "video" | "zip" | "pdf" | "rar" | "docs" | "psd";
 }

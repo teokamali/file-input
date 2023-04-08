@@ -1,11 +1,9 @@
 .image_preview_wrapper {
 	position: relative;
-	max-width: 200px;
 }
 .image {
-	width: 100%;
 	transition: opacity 200ms linear;
-	height: 100%;
+	object-fit: fill;
 }
 .button {
 	background: #db4747;

@@ -3,20 +3,19 @@
 import { FileInput, InputGroup, Preview } from "@core/index";
 import { IFile } from "@core/types";
 import ImagePreviewCard from "components/ImagePreviewCard/ImagePreviewCard";
-import Image from "next/image";
 import React from "react";
+import styled from "./example1.module.css";
 
 function Example1() {
 	return (
 		<div>
 			<InputGroup isMulti>
 				<h2>Select A File </h2>
-				<FileInput style={{ color: "transparent" }} />
+				<FileInput style={{ color: "transparent" }} acceptedFormats='image' />
 				<Preview>
 					{({ files, onDelete }) => {
-						console.log(files);
 						return (
-							<div className='flex flex-col '>
+							<div className={styled.preview_wrapper}>
 								{files.map((item: IFile, index) => {
 									const { file, type } = item;
 									switch (type) {
