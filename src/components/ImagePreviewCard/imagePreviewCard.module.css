@@ -1,0 +1,29 @@
+.image_preview_wrapper {
+	position: relative;
+	max-width: 200px;
+}
+.image {
+	width: 100%;
+	transition: opacity 200ms linear;
+	height: 100%;
+}
+.button {
+	background: #db4747;
+	padding: 0.5rem;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	outline: none;
+	transition: opacity 200ms linear;
+	cursor: pointer;
+	border: 0;
+	border-radius: 6px;
+	opacity: 0;
+	z-index: 10;
+}
+.image_preview_wrapper:hover .image {
+	opacity: 0.5;
+}
+.image_preview_wrapper:hover .button {
+	opacity: 1;
+}

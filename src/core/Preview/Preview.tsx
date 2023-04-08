@@ -18,8 +18,11 @@ const Preview = ({ children }: IPreviewProps) => {
 	if (!contextState || !setContextState) {
 		throw new Error("You Need to Wrap <InputGroup></InputGroup> context");
 	}
-	const { files, isMulti } = contextState;
+	const { files, isMulti, inputRef } = contextState;
 	const onDeleteFile = (item: File) => {
+		if (inputRef?.current) {
+			inputRef.current.value = "";
+		}
 		setContextState({ files: files.filter((file) => file.file !== item), isMulti: isMulti });
 	};
 	return <Fragment>{children({ files, onDelete: onDeleteFile })}</Fragment>;

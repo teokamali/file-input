@@ -1,4 +1,4 @@
-import Example1 from "examples/Example1";
+import Example1 from "examples/Example1/Example1";
 import React from "react";
 
 function Demo() {

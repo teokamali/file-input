@@ -1,8 +1,12 @@
 "use client";
 import { IFilesType, ReactFC } from "@core/types";
-import React, { Dispatch, useContext, useState } from "react";
+import React, { Dispatch, RefObject, useContext, useState } from "react";
 
-export type FilesContextType = { files: IFilesType; isMulti?: boolean };
+export type FilesContextType = {
+	files: IFilesType;
+	isMulti?: boolean;
+	inputRef?: RefObject<HTMLInputElement> | null;
+};
 const FilesContext = React.createContext<FilesContextType | null>(null);
 const FilesDispatchContext = React.createContext<Dispatch<
 	React.SetStateAction<FilesContextType>
@@ -11,6 +15,7 @@ const FilesDispatchContext = React.createContext<Dispatch<
 const FilesContextProvider: ReactFC<{ isMulti?: boolean }> = ({ children, isMulti = false }) => {
 	const [contextState, setContextState] = useState<FilesContextType>({
 		files: [],
+		inputRef: null,
 		isMulti,
 	});
 

@@ -27,29 +27,29 @@ const FileInput = (props: IFileInputProps) => {
 	};
 	useEffect(() => {
 		if (inputRef.current) {
-			if (files.length) {
-				return inputRef.current.setAttribute("value", files[files.length - 1].file.name);
-			} else {
-				inputRef.current.removeAttribute("value");
-			}
+			console.log(inputRef.current.value);
+			setContextState((prev) => ({ ...prev, inputRef }));
+			// if (files.length) {
+			// 	return inputRef.current.setAttribute("value", files[files.length - 1].file.name);
+			// } else {
+			// 	inputRef.current.removeAttribute("value");
+			// }
 		}
 	}, [files]);
 
 	return (
-		<Fragment>
-			<input
-				id='files'
-				type='file'
-				accept={acceptedFormats}
-				style={style}
-				ref={inputRef}
-				multiple={isMulti}
-				className={className}
-				onChange={(event: ChangeEvent<HTMLInputElement>) =>
-					onFileChangeHandler(event.target.files)
-				}
-			/>
-		</Fragment>
+		<input
+			id='files'
+			type='file'
+			accept={acceptedFormats}
+			style={style}
+			ref={inputRef}
+			multiple={isMulti}
+			className={className}
+			onChange={(event: ChangeEvent<HTMLInputElement>) => {
+				onFileChangeHandler(event.target.files);
+			}}
+		/>
 	);
 };
 

@@ -14,6 +14,7 @@ function Example1() {
 				<FileInput style={{ color: "transparent" }} />
 				<Preview>
 					{({ files, onDelete }) => {
+						console.log(files);
 						return (
 							<div className='flex flex-col '>
 								{files.map((item: IFile, index) => {
@@ -24,6 +25,7 @@ function Example1() {
 												<ImagePreviewCard
 													file={file}
 													onDeleteImage={() => onDelete(file)}
+													key={index}
 												/>
 											);
 										case "video":
